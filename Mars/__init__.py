@@ -5,13 +5,16 @@
 # 都是 Blender 从这个 bl_info 字典里读取并展示出来的 。
 
 
-bl_info={
+bl_info = {
     "name" : "Mars",
     "discription" : "Mesh editing tools",
     "author" :"m5",
-    "blender" : "view3D",
-    "category" : "3D view",
+    "version" : (1, 0, 0),
+    "blender" : (5, 0 ,1),
+    "location" : "View3D",
+    "category" : "3D View",
 }
+
 
 def register():
     from . import utils
