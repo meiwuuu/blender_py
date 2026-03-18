@@ -1,6 +1,6 @@
 import bpy
 from bpy.types import Context, Object, Mesh
-
+#文件名大小写搞错了
 
 def create_mesh(name:str="Object"):
     mesh = bpy.data.meshes.new(f"{name}_mesh")
