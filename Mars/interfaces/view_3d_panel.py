@@ -15,8 +15,5 @@ class MARS_PT_Operations(Panel):
 
     def draw(self, context):
         layout = self.layout
-        layout.label(text="Hello Panel")
 
-        obj = context.active_object
-        if isinstance(obj, bpy.types.Object):
-            layout.prop(obj,"name")
+        layout.operator("mars.create_cube")
