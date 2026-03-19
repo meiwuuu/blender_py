@@ -1,9 +1,11 @@
 import bpy
 
 from .create_cube import MARS_OT_CreateCube
+from .display_graphics import MARS_OT_DisplayGraphics
 
 CLASSES = (
     MARS_OT_CreateCube,
+    MARS_OT_DisplayGraphics,
 )
 
 

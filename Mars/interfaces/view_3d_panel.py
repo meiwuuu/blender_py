@@ -17,3 +17,10 @@ class MARS_PT_Operations(Panel):
         layout = self.layout
 
         layout.operator("mars.create_cube")
+        
+        props = layout.operator("mars.display_graphics",text="Start Graphics")
+        props.start_graphics = True
+
+        props = layout.operator("mars.display_graphics",text="Stop Graphics")
+        props.start_graphics = False
+
