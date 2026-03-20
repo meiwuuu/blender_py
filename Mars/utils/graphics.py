@@ -1,5 +1,6 @@
 import bpy
 import gpu
+import blf
 import math
 from gpu.types import GPUBatch
 from gpu_extras.batch import batch_for_shader
@@ -8,6 +9,13 @@ from mathutils import(
     Matrix,
     Color
 )
+#------------------------------------------------------------------------------------------- Screen
+def screen_factor():
+    return bpy.context.preferences.system.ui_scale
+
+
+
+#------------------------------------------------------------------------------------------- Geometry
 
 SHADER_UNIFORM_POINT = gpu.shader.from_builtin('POINT_UNIFORM_COLOR')
 SHADER_UNIFORM_LINE = gpu.shader.from_builtin('POLYLINE_UNIFORM_COLOR')
@@ -49,3 +57,27 @@ def set_alpha(enable:bool = True):
         gpu.state.blend_set('ALPHA')
     else:
         gpu.state.blend_set('NONE')
+
+
+#------------------------------------------------------------------------------------------- Font
+
+
+def draw_text(text:str="", position:tuple=(0,0), size:float=16,color:tuple=(0,0,0,1)):
+    factor = screen_factor()
+    blf.position(0, *position, 0)
+    blf.size(0, size * factor)
+    blf.color(0, *color)
+    blf.draw(0, text)
+
+def measure_text(text:str="", size:float=16) -> tuple[float, float]:
+    factor = screen_factor()
+    blf.size(0, size * factor)
+    x, y = blf.dimensions(0, text)
+    return x, y
+
+
+def measure_decender(size:float=16) -> float:
+    factor = screen_factor()
+    blf.size(0, size * factor)
+    x, y = blf.dimensions(0, "Klgy`")
+    return round(y * 0.25)
